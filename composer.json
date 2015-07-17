@@ -1,0 +1,24 @@
+{
+    "name": "matacms/matacms-user",
+    "description": "Flexible user registration and authentication module for MATA CMS",
+    "keywords": ["yii2", "matacms-user", "user management", "mata cms"],
+    "type": "yii2-extension",
+    "license": "MIT",
+    "support": {
+    },
+    "minimum-stability": "dev",
+    "require": {
+        "mata-user": "1.0-alpha",
+        "matacms-base": "1.0-alpha"
+    },
+    "require-dev": {
+        "yiisoft/yii2-codeception": "~2.0",
+        "codeception/specify": "*",
+        "codeception/verify": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "matacms\\user\\": ""
+        }
+    }
+}
