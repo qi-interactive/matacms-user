@@ -8,7 +8,7 @@
 
 namespace matacms\user\controllers;
 
-use mata\user\controllers\AdminController as BaseAdminController
+use mata\user\controllers\AdminController as BaseAdminController;
 
 /**
  * AdminController allows you to administrate users.
