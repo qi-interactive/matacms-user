@@ -8,6 +8,7 @@
     },
     "minimum-stability": "dev",
     "require": {
+        "mata/mata-user": "matacms-decoupling",
         "matacms-base": "dev-development"
     },
     "require-dev": {
