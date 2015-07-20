@@ -28,6 +28,6 @@ php yii migrate/up --migrationPath=@vendor/matacms/matacms-user/migrations
 Changelog
 ---------
 
-## 1.0.0-alpha, July 19, 2015
+## 1.0.0-alpha, July 20, 2015
 
 - Initial release
