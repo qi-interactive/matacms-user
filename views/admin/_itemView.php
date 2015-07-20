@@ -1,7 +1,7 @@
 <?php
 
 use matacms\user\models\Profile;
-use matacms\helpers\Html;
+use yii\helpers\Html;
 use matacms\theme\simple\assets\ListAsset;
 
 ListAsset::register($this);

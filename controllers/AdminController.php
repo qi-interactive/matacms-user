@@ -12,6 +12,7 @@ use mata\user\controllers\AdminController as BaseAdminController;
 use matacms\user\Finder;
 use matacms\user\models\User;
 use matacms\user\models\UserSearch;
+use Yii;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 
@@ -34,18 +35,18 @@ class AdminController extends BaseAdminController
                     'block'   => ['post'],
                 ],
             ],
-            'access' => [
-                'class' => AccessControl::className(),
-                'rules' => [
-                    [
-                        'allow' => true,
-                        'roles' => ['@'],
-                        'matchCallback' => function () {
-                            return Yii::$app->user->identity->getIsAdmin();
-                        },
-                    ],
-                ],
-            ],
+            // 'access' => [
+            //     'class' => AccessControl::className(),
+            //     'rules' => [
+            //         [
+            //             'allow' => true,
+            //             'roles' => ['@'],
+            //             'matchCallback' => function () {
+            //                 return Yii::$app->user->identity->getIsAdmin();
+            //             },
+            //         ],
+            //     ],
+            // ],
         ];
     }
 
