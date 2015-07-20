@@ -9,7 +9,7 @@
     "minimum-stability": "dev",
     "require": {
         "mata/mata-user": "~1.0-alpha",
-        "matacms/matacms-rbac": "~1.0-alpha",
+        "matacms/matacms-rbac": "dev-development",
         "matacms/matacms-base": "~1.0-alpha"
     },
     "require-dev": {
