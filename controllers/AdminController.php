@@ -12,6 +12,8 @@ use mata\user\controllers\AdminController as BaseAdminController;
 use matacms\user\Finder;
 use matacms\user\models\User;
 use matacms\user\models\UserSearch;
+use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 /**
  * AdminController allows you to administrate users.
