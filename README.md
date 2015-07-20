@@ -28,6 +28,10 @@ php yii migrate/up --migrationPath=@vendor/matacms/matacms-user/migrations
 Changelog
 ---------
 
+## 1.0.1-alpha, July 20, 2015
+
+- Added dependency on matacms/matacms-rbac dev-development
+
 ## 1.0.0-alpha, July 20, 2015
 
 - Initial release
