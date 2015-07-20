@@ -30,7 +30,7 @@ Changelog
 
 ## 1.0.1-alpha, July 20, 2015
 
-- Added dependency on matacms/matacms-rbac dev-development
+- Added dependency on matacms/matacms-rbac ~1.0-alpha
 
 ## 1.0.0-alpha, July 20, 2015
 
