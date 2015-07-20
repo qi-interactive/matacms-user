@@ -9,12 +9,11 @@
  * file that was distributed with this source code.
  */
 
-/**
- * @var matacms\widgets\ActiveForm       $form
- * @var matacms\user\models\Profile $profile
- */
+namespace matacms\user\clients;
 
-?>
+use mata\user\clients\ClientInterface as BaseClientInterface;
 
-<?= $form->field($profile, 'name') ?>
-<?= $form->field($profile, 'Avatar')->media() ?>
+interface ClientInterface extends BaseClientInterface
+{
+
+}

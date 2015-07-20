@@ -9,6 +9,9 @@
 namespace matacms\user\controllers;
 
 use mata\user\controllers\AdminController as BaseAdminController;
+use matacms\user\Finder;
+use matacms\user\models\User;
+use matacms\user\models\UserSearch;
 
 /**
  * AdminController allows you to administrate users.
@@ -17,5 +20,35 @@ use mata\user\controllers\AdminController as BaseAdminController;
  */
 class AdminController extends BaseAdminController
 {
+
+    public function behaviors()
+    {
+        return [
+            'verbs' => [
+                'class' => VerbFilter::className(),
+                'actions' => [
+                    'delete'  => ['post'],
+                    'confirm' => ['post'],
+                    'block'   => ['post'],
+                ],
+            ],
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                        'matchCallback' => function () {
+                            return Yii::$app->user->identity->getIsAdmin();
+                        },
+                    ],
+                ],
+            ],
+        ];
+    }
+
+    public function getModel() {
+        return new \matacms\user\models\User();
+    }
 
 }

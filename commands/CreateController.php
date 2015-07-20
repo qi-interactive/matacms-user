@@ -9,8 +9,9 @@
 namespace matacms\user\commands;
 
 use mata\user\commands\CreateController as BaseCreateController;
+use matacms\user\Finder;
 
 class CreateController extends BaseCreateController
 {
-    
+
 }

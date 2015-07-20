@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-use yii\helpers\Html;
+use matacms\helpers\Html;
 use matacms\widgets\ActiveForm;
-use mata\user\widgets\Connect;
+use matacms\user\widgets\Connect;
 
 /**
  * @var yii\web\View                   $this

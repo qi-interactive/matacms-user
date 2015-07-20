@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-use yii\helpers\Html;
+use matacms\helpers\Html;
 use matacms\widgets\ActiveForm;
 use yii\helpers\Inflector;
 
@@ -17,9 +17,9 @@ use yii\helpers\Inflector;
 
 /**
  * @var yii\web\View                 $this
- * @var mata\user\models\User    $user
- * @var mata\user\models\Profile $profile
- * @var mata\user\Module         $module
+ * @var matacms\user\models\User    $user
+ * @var matacms\user\models\Profile $profile
+ * @var matacms\user\Module         $module
  */
 
 $this->title = Yii::t('user', 'Update user account');
@@ -33,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
     <?php if(!empty($user->created_at)) : ?>
         <div class="user-registered-date">
-            Registered on <?php 
+            Registered on <?php
             echo  date('F d, Y H:i', strtotime($user->created_at));
             ?>
         </div>
@@ -62,6 +62,19 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?= $this->render('_profile', ['form' => $form, 'profile' => $profile]) ?>
             </div>
         </div>
+
+        <?php if(isset(Yii::$app->extensions['matacms/rbac'])): ?>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <?= Yii::t('user', 'Update user permissions') ?>
+            </div>
+            <div class="panel-body">
+                <?= $this->render('_assignments', ['form' => $form, 'user' => $user]) ?>
+            </div>
+        </div>
+
+        <?php endif; ?>
 
         <div class="form-group submit-form-group">
             <?= Html::submitButton(Yii::t('user', 'Save'), ['class' => 'btn btn-primary btn-sm']) ?>

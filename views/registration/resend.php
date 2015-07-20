@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-use yii\helpers\Html;
+use matacms\helpers\Html;
 use matacms\widgets\ActiveForm;
 
 /**

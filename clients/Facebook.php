@@ -9,12 +9,14 @@
  * file that was distributed with this source code.
  */
 
+namespace matacms\user\clients;
+
+use mata\user\clients\Facebook as BaseFacebook;
+
 /**
- * @var matacms\widgets\ActiveForm       $form
- * @var matacms\user\models\Profile $profile
+ * @author Dmitry Erofeev <dmeroff@gmail.com>
  */
+class Facebook extends BaseFacebook
+{
 
-?>
-
-<?= $form->field($profile, 'name') ?>
-<?= $form->field($profile, 'Avatar')->media() ?>
+}

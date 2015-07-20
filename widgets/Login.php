@@ -8,9 +8,10 @@
 
 namespace matacms\user\widgets;
 
-use mata\user\widgets\Login as BaseLogin;
+use matacms\user\widgets\Login as BaseLogin;
+use matacms\user\models\LoginForm;
 
 class Login extends BaseLogin
 {
-    
+
 }

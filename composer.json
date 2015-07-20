@@ -21,5 +21,12 @@
         "psr-4": {
             "matacms\\user\\": ""
         }
+    },
+    "extra": {
+        "bootstrap": "matacms\\user\\Bootstrap",
+        "asset-installer-paths": {
+            "npm-asset-library": "vendor/npm",
+            "bower-asset-library": "vendor/bower"
+        }
     }
 }

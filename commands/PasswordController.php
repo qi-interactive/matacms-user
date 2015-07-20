@@ -9,8 +9,9 @@
 namespace matacms\user\commands;
 
 use matacms\user\commands\PasswordController as BasePasswordController;
+use matacms\user\Finder;
 
 class PasswordController extends BasePasswordController
 {
-    
+
 }

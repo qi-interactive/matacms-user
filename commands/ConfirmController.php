@@ -9,8 +9,9 @@
 namespace mata\user\commands;
 
 use mata\user\commands\ConfirmController as BaseConfirmController;
+use matacms\user\Finder;
 
 class ConfirmController extends BaseConfirmController
 {
-    
+
 }

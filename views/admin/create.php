@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-use yii\helpers\Html;
+use matacms\helpers\Html;
 use matacms\widgets\ActiveForm;
 use yii\helpers\Inflector;
 
@@ -17,7 +17,7 @@ use yii\helpers\Inflector;
 
 /**
  * @var yii\web\View              $this
- * @var mata\user\models\User $user
+ * @var matacms\user\models\User $user
  */
 
 $this->title = Yii::t('user', 'Create a user account');

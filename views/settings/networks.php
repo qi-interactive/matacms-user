@@ -10,7 +10,7 @@
  */
 
 use matacms\user\widgets\Connect;
-use yii\helpers\Html;
+use matacms\helpers\Html;
 
 /**
  * @var yii\web\View $this

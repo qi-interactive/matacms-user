@@ -9,8 +9,9 @@
 namespace matacms\user\commands;
 
 use matacms\user\commands\DeleteController as BaseDeleteController;
+use matacms\user\Finder;
 
 class DeleteController extends BaseDeleteController
 {
-    
+
 }

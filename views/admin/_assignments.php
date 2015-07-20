@@ -9,12 +9,13 @@
  * file that was distributed with this source code.
  */
 
+use mata\rbac\widgets\Assignments;
+
 /**
- * @var matacms\widgets\ActiveForm       $form
- * @var matacms\user\models\Profile $profile
+ * @var yii\web\View 				$this
+ * @var matacms\user\models\User 	$user
  */
 
 ?>
 
-<?= $form->field($profile, 'name') ?>
-<?= $form->field($profile, 'Avatar')->media() ?>
+<?= Assignments::widget(['userId' => $user->id]) ?>

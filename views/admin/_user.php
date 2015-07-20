@@ -11,7 +11,7 @@
 
 /**
  * @var matacms\widgets\ActiveForm    $form
- * @var mata\user\models\User $user
+ * @var matacms\user\models\User $user
  */
 
 ?>

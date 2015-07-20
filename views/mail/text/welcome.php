@@ -10,7 +10,7 @@
  */
 
 /**
- * @var mata\user\models\User $user
+ * @var matacms\user\models\User $user
  */
 ?>
 <?= Yii::t('user', 'Hello') ?>,

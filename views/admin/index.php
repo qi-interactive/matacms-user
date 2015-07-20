@@ -9,16 +9,15 @@
  * file that was distributed with this source code.
  */
 
-use yii\helpers\Html;
+use matacms\helpers\Html;
 use yii\widgets\Pjax;
 use yii\widgets\ListView;
-use kartik\sortable\Sortable;
 use yii\helpers\Inflector;
 
 /**
  * @var yii\web\View $this
  * @var yii\data\ActiveDataProvider $dataProvider
- * @var mata\user\models\UserSearch $searchModel
+ * @var matacms\user\models\UserSearch $searchModel
  */
 
 $this->title = Yii::t('user', 'Manage users');
@@ -38,7 +37,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <?= Html::a(sprintf('Create %s', Yii::$app->controller->getModel()->getModelLabel()), ['create'], ['class' => 'btn btn-success']) ?>
           </div>
         </div>
-        <div class="search-container"> 
+        <div class="search-container">
           <div class="search-input-container">
             <input class="search-input" id="item-search" placeholder="Type to search" value="" name="search">
             <div class="search-submit-btn"><input type="submit" value=""></div>
@@ -48,7 +47,7 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
   </div>
 
-  <?php 
+  <?php
 
   $pjax = Pjax::begin([
    "timeout" => 10000,
@@ -63,7 +62,7 @@ $this->params['breadcrumbs'][] = $this->title;
          <ul>
            <li class="sort-by-label"> Sort by </li>
            <?php foreach ($searchModel->filterableAttributes() as $attribute): ?>
-             <li> 
+             <li>
               <?php
 
             //  Sorting resets page count
@@ -96,12 +95,12 @@ $this->params['breadcrumbs'][] = $this->title;
     'itemSelector' => 'div[data-key]'
     ]
     ]
-    ]); 
+    ]);
 
     ?>
     <?php Pjax::end() ?>
 
-    <?php 
+    <?php
 
     if (count($searchModel->filterableAttributes()) > 0)
       $this->registerJs('

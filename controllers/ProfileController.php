@@ -9,6 +9,7 @@
 namespace matacms\user\controllers;
 
 use mata\user\controllers\ProfileController as BaseProfileController;
+use matacms\user\Finder;
 
 class ProfileController extends BaseProfileController
 {
