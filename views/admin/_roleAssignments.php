@@ -18,4 +18,4 @@ use matacms\rbac\widgets\Assignments;
 
 ?>
 
-<?= Assignments::widget(['userId' => $user->id]) ?>
+<?= Assignments::widget(['form' => $form, 'userModel' => $userModel]) ?>
