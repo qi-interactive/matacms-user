@@ -28,6 +28,10 @@ php yii migrate/up --migrationPath=@vendor/matacms/matacms-user/migrations
 Changelog
 ---------
 
+## 1.0.1.7-alpha, July 22, 2015
+
+- Updates
+
 ## 1.0.1.6-alpha, July 22, 2015
 
 - Updates, role assignment (rbac) field added with functionality
