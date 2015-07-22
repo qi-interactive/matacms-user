@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-use matacms\helpers\Html;
+use yii\helpers\Html;
 use matacms\widgets\ActiveForm;
 use yii\helpers\Inflector;
 
@@ -63,7 +63,7 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
         </div>
 
-        <?php if(isset(Yii::$app->extensions['matacms/rbac'])): ?>
+        <?php if(isset(Yii::$app->extensions['matacms/matacms-rbac'])): ?>
 
         <div class="panel panel-default">
             <div class="panel-heading">
