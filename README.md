@@ -30,7 +30,7 @@ Changelog
 
 ## 1.0.1.6-alpha, July 22, 2015
 
-- Update
+- Updates, role assignment (rbac) field added with functionality
 
 ## 1.0.1.5-alpha, July 22, 2015
 

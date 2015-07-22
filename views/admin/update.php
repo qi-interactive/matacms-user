@@ -70,7 +70,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?= Yii::t('user', 'Update user permissions') ?>
             </div>
             <div class="panel-body">
-                <?= $this->render('_assignments', ['form' => $form, 'user' => $user]) ?>
+                <?= $this->render('_roleAssignments', ['form' => $form, 'userModel' => $user]) ?>
             </div>
         </div>
 
