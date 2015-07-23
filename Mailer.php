@@ -18,7 +18,7 @@ use yii\base\Component;
 class Mailer extends Component
 {
     /** @var string */
-    public $viewPath = '@mata/user/views/mail';
+    public $viewPath = '@matacms/user/views/mail';
 
     /** @var string|array */
     public $sender = 'no-reply@example.com';

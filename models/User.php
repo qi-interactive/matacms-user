@@ -8,10 +8,10 @@
 
 namespace matacms\user\models;
 
-use mata\user\Finder;
-use mata\user\helpers\Password;
-use mata\user\Mailer;
-use mata\user\Module;
+use matacms\user\Finder;
+use matacms\user\helpers\Password;
+use matacms\user\Mailer;
+use matacms\user\Module;
 use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
 use matacms\db\ActiveRecord;

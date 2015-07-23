@@ -51,6 +51,19 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
         </div>
 
+        <?php if(isset(Yii::$app->extensions['matacms/matacms-rbac'])): ?>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <?= Yii::t('user', 'Update user permissions') ?>
+            </div>
+            <div class="panel-body">
+                <?= $this->render('_roleAssignments', ['form' => $form, 'userModel' => $user]) ?>
+            </div>
+        </div>
+
+        <?php endif; ?>
+
         <div class="form-group submit-form-group">
             <?= Html::submitButton(Yii::t('user', 'Save'), ['class' => 'btn btn-success']) ?>
         </div>

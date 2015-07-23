@@ -9,7 +9,7 @@
 namespace matacms\user;
 
 use yii\base\Object;
-use matacms\db\ActiveQuery;
+use yii\db\ActiveQuery;
 
 /**
  * Finder provides some useful methods for finding active record models.
