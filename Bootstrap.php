@@ -16,12 +16,13 @@ use yii\i18n\PhpMessageSource;
 use yii\web\GroupUrlRule;
 use yii\console\Application as ConsoleApplication;
 use yii\web\User;
+use mata\user\Bootstrap as BaseBootstrap;
 
 /**
  * Bootstrap class registers module and user application component. It also creates some url rules which will be applied
  * when UrlManager.enablePrettyUrl is enabled.
  */
-class Bootstrap implements BootstrapInterface
+class Bootstrap extends BaseBootstrap
 {
     /** @var array Model's map */
     private $_modelMap = [
