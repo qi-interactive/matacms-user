@@ -16,5 +16,5 @@ use matacms\widgets\ActiveForm;
 
 class SecurityController extends BaseSecurityController
 {
-
+	public $layout = "@matacms/views/layouts/login";
 }

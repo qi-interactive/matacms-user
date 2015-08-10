@@ -17,6 +17,12 @@ use yii\web\GroupUrlRule;
 use yii\console\Application as ConsoleApplication;
 use yii\web\User;
 use mata\user\Bootstrap as BaseBootstrap;
+use matacms\user\behaviors\ModuleAccessibilityActiveFormBehavior;
+use matacms\user\controllers\AdminController as AdminController;
+use matacms\widgets\ActiveField;
+use mata\base\MessageEvent;
+use yii\base\Event;
+use matacms\controllers\module\Controller;
 
 /**
  * Bootstrap class registers module and user application component. It also creates some url rules which will be applied
@@ -104,5 +110,50 @@ class Bootstrap extends BaseBootstrap
             \Yii::$container->set('matacms\user\Mailer', array_merge($defaults, $module->mailer));
         }
 
+        Event::on(ActiveField::className(), ActiveField::EVENT_INIT_DONE, function(MessageEvent $event) {
+            $event->getMessage()->attachBehavior('moduleAccessibility', new ModuleAccessibilityActiveFormBehavior());
+        });
+
+        Event::on(AdminController::class, Controller::EVENT_MODEL_UPDATED, function(\matacms\base\MessageEvent $event) {
+            $this->processSave($event->getMessage());
+        });
+
+        Event::on(AdminController::class, Controller::EVENT_MODEL_CREATED, function(\matacms\base\MessageEvent $event) {
+            $this->processSave($event->getMessage());
+        });
+
+    }
+
+    private function processSave($model) {
+
+        if (empty($modules = \Yii::$app->request->post('ModuleAccessibility')))
+            return;
+
+        $userId = $model->getId();
+
+        \Yii::$app->moduleAccessibilityManager->deleteAllModulesByUser($userId);
+
+        if(is_array($modules)) {
+            foreach ($modules as $module) {
+                $this->saveModuleAccess($module, $model, $userId);
+            }
+        } elseif(is_string($modules)) {
+            $this->saveModuleAccess($modules, $model, $userId);
+        }
+    }
+
+    private function saveModuleAccess($module, $model, $userId)
+    {
+        $moduleMenuManager = \Yii::$app->moduleAccessibilityManager;
+        $moduleAccessible = $moduleMenuManager->getModuleByUser($module, $userId);
+
+        if ($moduleAccessible == null) {
+
+            $moduleAccessible = $moduleMenuManager->applyAccess($module, $userId);
+
+            if(empty($moduleAccessible))
+                throw new \yii\web\ServerErrorHttpException(\yii\helpers\CVarDumper::dumpAsString($moduleAccessible));
+
+        }
     }
 }

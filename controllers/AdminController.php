@@ -26,6 +26,14 @@ use yii\filters\AccessControl;
 class AdminController extends BaseAdminController
 {
 
+    protected $finder;
+
+    public function __construct($id, $module, Finder $finder, $config = [])
+    {
+        $this->finder = $finder;
+        parent::__construct($id, $module, $finder, $config);
+    }
+
     public function behaviors()
     {
         return [
@@ -37,18 +45,18 @@ class AdminController extends BaseAdminController
                     'block'   => ['post'],
                 ],
             ],
-            // 'access' => [
-            //     'class' => AccessControl::className(),
-            //     'rules' => [
-            //         [
-            //             'allow' => true,
-            //             'roles' => ['@'],
-            //             'matchCallback' => function () {
-            //                 return Yii::$app->user->identity->getIsAdmin();
-            //             },
-            //         ],
-            //     ],
-            // ],
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                        'matchCallback' => function () {
+                            return Yii::$app->user->identity->getIsAdmin();
+                        },
+                    ],
+                ],
+            ],
         ];
     }
 

@@ -200,4 +200,13 @@ class Finder extends Object
     {
         return $this->profileQuery->where($condition);
     }
+
+    public function findUsersWithRole($role)
+    {
+        $reviewersIds = \Yii::$app->authManager->getUsersIdsWithRole($role);
+        if(empty($reviewersIds))
+            return null;
+
+        return $this->findUser(['IN', 'id', $reviewersIds])->with(['profile'])->asArray()->all();
+    }
 }

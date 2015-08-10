@@ -25,6 +25,8 @@ $this->title = Yii::t('user', 'Account settings');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
+<?= $this->render('/_alert', ['module' => Yii::$app->getModule('user')]) ?>
+
 <div class="account-update">
 
     <h1><?= Html::encode($this->title) ?></h1>

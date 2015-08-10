@@ -97,7 +97,12 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public function getIsAdmin()
     {
-        return in_array($this->username, $this->module->admins);
+        return \Yii::$app->authManager->getIsAdmin($this->id);
+    }
+
+    public function hasRoles()
+    {
+        return \Yii::$app->authManager->hasRoles($this->id);
     }
 
     /**

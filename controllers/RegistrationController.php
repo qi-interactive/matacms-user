@@ -16,5 +16,5 @@ use matacms\user\models\User;
 
 class RegistrationController extends BaseRegistrationController
 {
-
+	public $layout = "@matacms/views/layouts/login";
 }

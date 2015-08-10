@@ -18,8 +18,18 @@ use mata\user\Module as BaseModule;
 class Module extends BaseModule
 {
 
-    public function getNavigation() {
+    public $urlRules = [
+        '<id:\d+>'                    => 'profile/show',
+        '<action:(login|logout)>'     => 'security/<action>',
+        '<action:(register|resend)>'  => 'registration/<action>',
+        'confirm/<id:\d+>/<code:\w+>' => 'registration/confirm',
+        'forgot'                      => 'recovery/request',
+        'recover/<id:\d+>/<code:([0-9a-zA-Z\-_=]+)>' => 'recovery/reset',
+        'settings/<action:\w+>'       => 'settings/<action>'
+    ];
 
+    public function getNavigation()
+    {
         return [
             [
                 "label" => "Your profile",

@@ -15,5 +15,5 @@ use matacms\user\models\Token;
 
 class RecoveryController extends BaseRecoveryController
 {
-
+	
 }
