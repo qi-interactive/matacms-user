@@ -10,6 +10,7 @@ namespace matacms\user\controllers;
 
 use matacms\user\Finder;
 use matacms\user\models\User;
+use matacms\user\models\Profile;
 use matacms\user\models\UserSearch;
 use yii\base\Model;
 use mata\web\module\Controller;
@@ -133,23 +134,32 @@ class AdminController extends Controller
      */
      public function actionCreate()
      {
-         /** @var User $user */
-         $user = \Yii::createObject([
-             'class'    => User::className(),
-             'scenario' => 'create',
-             ]);
+        /** @var User $user */
+        $user = \Yii::createObject([
+            'class'    => User::className(),
+            'scenario' => 'create',
+        ]);
 
-         $this->performAjaxValidation($user);
+        $profile = \Yii::createObject([
+            'class'    => Profile::className(),
+        ]);
+        $r = \Yii::$app->request;
 
-         if ($user->load(\Yii::$app->request->post()) && $user->create()) {
-             $this->trigger(BaseController::EVENT_MODEL_CREATED, new MessageEvent($user));
-             \Yii::$app->getSession()->setFlash('success', \Yii::t('user', 'User has been created'));
-             return $this->redirect(['index']);
-         }
+        $this->performAjaxValidation($user);
 
-         return $this->render('create', [
-             'user' => $user
-             ]);
+        if ($user->load($r->post()) && $user->save()) {
+            $profile = $this->finder->findProfileById($user->id);
+            $profile->load($r->post());
+            $profile->save();
+            $this->trigger(BaseController::EVENT_MODEL_UPDATED, new MessageEvent($user));
+            \Yii::$app->getSession()->setFlash('success', \Yii::t('user', 'User has been created'));
+            return $this->redirect(['index']);
+        }
+
+        return $this->render('create', [
+            'user' => $user,
+            'profile' => $profile
+        ]);
      }
 
      /**

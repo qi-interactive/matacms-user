@@ -41,13 +41,22 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
             <div class="panel-body">
                 <div class="alert-section">
-                    <div class="alert alert-info">
+                    <div class="alert alert-success">
                         <?= Yii::t('user', 'Credentials will be sent to the user by email') ?>.
                         <?= Yii::t('user', 'A password will be generated automatically if not provided') ?>.
                     </div>
                 </div>
 
                 <?= $this->render('_user', ['form' => $form, 'user' => $user]) ?>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <?= Yii::t('user', 'Update user profile') ?>
+            </div>
+            <div class="panel-body">
+                <?= $this->render('_profile', ['form' => $form, 'profile' => $profile]) ?>
             </div>
         </div>
 

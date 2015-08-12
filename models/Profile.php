@@ -49,7 +49,7 @@ class Profile extends ActiveRecord
     public function rules()
     {
         return [
-            [['name'], 'required'],
+            // [['name'], 'required'],
             [['bio'], 'string'],
             [['public_email', 'gravatar_email'], 'email'],
             ['website', 'url'],
