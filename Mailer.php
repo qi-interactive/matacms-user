@@ -33,6 +33,9 @@ class Mailer extends Component
     public $reconfirmationSubject;
 
     /** @var string */
+    public $passwordChangedSubject;
+
+    /** @var string */
     public $recoverySubject;
 
     /**
@@ -101,6 +104,22 @@ class Mailer extends Component
             $this->recoverySubject,
             'recovery',
             ['user' => $user, 'token' => $token]
+        );
+    }
+
+    /**
+     * Sends an email to a user with notification about password changed by administrator.
+     *
+     * @param  User  $user
+     * @param  Token $token
+     * @return bool
+     */
+    public function sendPasswordChangeMessage(User $user)
+    {
+        return $this->sendMessage($user->email,
+            $this->passwordChangedSubject,
+            'passwordChanged',
+            ['user' => $user]
         );
     }
 

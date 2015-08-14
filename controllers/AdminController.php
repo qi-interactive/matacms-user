@@ -151,7 +151,7 @@ class AdminController extends Controller
             $profile = $this->finder->findProfileById($user->id);
             $profile->load($r->post());
             $profile->save();
-            $this->trigger(BaseController::EVENT_MODEL_UPDATED, new MessageEvent($user));
+            $this->trigger(BaseController::EVENT_MODEL_CREATED, new MessageEvent($user));
             \Yii::$app->getSession()->setFlash('success', \Yii::t('user', 'User has been created'));
             return $this->redirect(['index']);
         }

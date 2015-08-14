@@ -29,11 +29,14 @@ $profileAvatarURI = !empty($avatar = $model->profile->getMediaAvatar()) ? $avata
                 <div class="list-label">
 
                     <?php if ($model->isConfirmed): ?>
+                        <?php
+                        $status = !$model->isBlocked ? Yii::t('user', 'Confirmed') : Yii::t('user', 'Blocked');
+                        ?>
                         <div class="list-version-container confirm">
                             <div class="fadding-container"> </div>
                             <div class="list-version-inner-container">
                                 <div class="version-status">
-                                    <?= Yii::t('user', 'Confirmed') ?>
+                                    <?= $status ?>
                                 </div>
                             </div>
                         </div>
@@ -84,7 +87,7 @@ $profileAvatarURI = !empty($avatar = $model->profile->getMediaAvatar()) ? $avata
                 </div>
             </div>
         </a>
-        <a class='delete-btn' href="<?= sprintf("%s/delete?id=%d", $moduleBaseUrl, $model->primaryKey );?>" title="Delete" aria-label="Delete" data-confirm="Are you sure you want to delete this user?" data-method="post" data-pjax="0">
+        <a class='delete-btn' href="<?= sprintf("%s/block?id=%d", $moduleBaseUrl, $model->primaryKey );?>" title="Block" aria-label="Block" data-confirm="Are you sure you want to block this user?" data-method="post" data-pjax="0">
            <?php if(method_exists($model, 'canBeDeleted')) {
            // echo "data-delete-allowed=\"" . var_export($model->canBeDeleted(), true) . "\"";
             if(!$model->canBeDeleted()) {

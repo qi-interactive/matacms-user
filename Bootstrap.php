@@ -103,7 +103,8 @@ class Bootstrap implements BootstrapInterface
                 'welcomeSubject'        => \Yii::t('user', 'Welcome to {0}', \Yii::$app->name),
                 'confirmationSubject'   => \Yii::t('user', 'Confirm account on {0}', \Yii::$app->name),
                 'reconfirmationSubject' => \Yii::t('user', 'Confirm email change on {0}', \Yii::$app->name),
-                'recoverySubject'       => \Yii::t('user', 'Complete password reset on {0}', \Yii::$app->name)
+                'recoverySubject'       => \Yii::t('user', 'Complete password reset on {0}', \Yii::$app->name),
+                'passwordChangedSubject'       => \Yii::t('user', 'Your password has been changed on {0}', \Yii::$app->name)
             ];
 
             \Yii::$container->set('matacms\user\Mailer', array_merge($defaults, $module->mailer));
