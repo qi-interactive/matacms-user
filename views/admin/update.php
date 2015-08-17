@@ -78,12 +78,12 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="form-group submit-form-group">
             <?= Html::submitButton(Yii::t('user', 'Save'), ['class' => 'btn btn-primary btn-sm']) ?>
             <?php if (!$user->getIsConfirmed()): ?>
-                <?= Html::a(Yii::t('user', 'Confirm'), ['confirm', 'id' => $user->id, 'back' => 'update'], ['class' => 'btn btn-success btn-sm', 'data-method' => 'post']) ?>
+                <?= Html::a(Yii::t('user', 'Confirm'), ['confirm', 'id' => $user->id, 'back' => 'update'], ['class' => 'btn btn-success btn-sm']) ?>
             <?php endif; ?>
             <?php if ($user->getIsBlocked()): ?>
-                <?= Html::a(Yii::t('user', 'Unblock'), ['block', 'id' => $user->id, 'back' => 'update'], ['class' => 'btn btn-success btn-sm', 'data-method' => 'post', 'data-confirm' => Yii::t('user', 'Are you sure you want to block this user?')]) ?>
+                <?= Html::a(Yii::t('user', 'Unblock'), ['block', 'id' => $user->id], ['class' => 'btn btn-success btn-sm', 'data-confirm' => Yii::t('user', 'Are you sure you want to block this user?')]) ?>
             <?php else: ?>
-                <?= Html::a(Yii::t('user', 'Block'), ['block', 'id' => $user->id, 'back' => 'update'], ['class' => 'btn btn-danger btn-sm', 'data-method' => 'post', 'data-confirm' => Yii::t('user', 'Are you sure you want to block this user?')]) ?>
+                <?= Html::a(Yii::t('user', 'Block'), ['block', 'id' => $user->id], ['class' => 'btn btn-danger btn-sm', 'data-confirm' => Yii::t('user', 'Are you sure you want to block this user?')]) ?>
             <?php endif; ?>
         </div>
 

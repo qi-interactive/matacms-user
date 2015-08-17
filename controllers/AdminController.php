@@ -55,8 +55,8 @@ class AdminController extends Controller
         'class' => VerbFilter::className(),
         'actions' => [
         'delete'  => ['post'],
-        'confirm' => ['post'],
-        'block'   => ['post']
+        'confirm' => ['get'],
+        'block'   => ['get']
         ],
         ],
             // 'access' => [
