@@ -436,7 +436,7 @@ class User extends ActiveRecord implements IdentityInterface
             $profile->save(false);
         }
         else {
-
+            // TO BE FIXED
             if(\Yii::$app->user->getId() != $this->id && \Yii::$app->authManager->getIsAdmin(\Yii::$app->user->getId())) {
                 $this->mailer->sendPasswordChangeMessage($this);
             }
