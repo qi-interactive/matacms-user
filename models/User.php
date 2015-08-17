@@ -63,6 +63,8 @@ class User extends ActiveRecord implements IdentityInterface
     /** @var \mata\user\Finder */
     protected $finder;
 
+    protected $passwordChanged = false;
+
     /** @inheritdoc */
     public function init()
     {
@@ -418,6 +420,7 @@ class User extends ActiveRecord implements IdentityInterface
         }
 
         if (!empty($this->password)) {
+            $this->passwordChanged = !Password::validate($this->password, $this->getOldAttribute('password_hash'));
             $this->setAttribute('password_hash', Password::hash($this->password));
         }
 
@@ -436,8 +439,7 @@ class User extends ActiveRecord implements IdentityInterface
             $profile->save(false);
         }
         else {
-            // TO BE FIXED
-            if(\Yii::$app->user->getId() != $this->id && \Yii::$app->authManager->getIsAdmin(\Yii::$app->user->getId())) {
+            if(\Yii::$app->user->getId() != $this->id && \Yii::$app->authManager->getIsAdmin(\Yii::$app->user->getId()) && $this->passwordChanged) {
                 $this->mailer->sendPasswordChangeMessage($this);
             }
 
