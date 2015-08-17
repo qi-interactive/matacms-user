@@ -15,7 +15,10 @@
     "require-dev": {
         "yiisoft/yii2-codeception": "~2.0",
         "codeception/specify": "*",
-        "codeception/verify": "*"
+        "codeception/verify": "*",
+        "mata/mata-user": "dev-development",
+        "matacms/matacms-rbac": "dev-development",
+        "matacms/matacms-base": "dev-development"
     },
     "autoload": {
         "psr-4": {
