@@ -87,13 +87,4 @@ $profileAvatarURI = !empty($avatar = $model->profile->getMediaAvatar()) ? $avata
                 </div>
             </div>
         </a>
-        <a class='delete-btn' href="<?= sprintf("%s/block?id=%d", $moduleBaseUrl, $model->primaryKey );?>" title="Block" aria-label="Block" data-confirm="Are you sure you want to block this user?" data-method="post" data-pjax="0">
-         <?php if(method_exists($model, 'canBeDeleted')) {
-           // echo "data-delete-allowed=\"" . var_export($model->canBeDeleted(), true) . "\"";
-            if(!$model->canBeDeleted()) {
-             // echo " data-delete-alert=\"" . $model->deleteAlertMessage() . "\"";
-            }
-        }
-        ?>
-    </a>
 </div>
