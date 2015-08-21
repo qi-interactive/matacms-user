@@ -32,7 +32,7 @@ $profileAvatarURI = !empty($avatar = $model->profile->getMediaAvatar()) ? $avata
                         <?php
                         $status = !$model->isBlocked ? Yii::t('user', 'Confirmed') : Yii::t('user', 'Blocked');
                         ?>
-                        <div class="list-version-container confirm">
+                        <div class="list-version-container <?php echo $model->isBlocked ? 'block' : 'confirm'; ?>">
                             <div class="fadding-container"> </div>
                             <div class="list-version-inner-container">
                                 <div class="version-status">
@@ -44,7 +44,7 @@ $profileAvatarURI = !empty($avatar = $model->profile->getMediaAvatar()) ? $avata
 
 
                     <?php if (!$model->isConfirmed): ?>
-                     <?php   Html::a(Yii::t('user', 'Confirm'), ['confirm', 'id' => $model->id], [
+                       <?php   Html::a(Yii::t('user', 'Confirm'), ['confirm', 'id' => $model->id], [
                         'class' => 'btn btn-xs btn-success btn-block',
                         'data-method' => 'post',
                         'data-confirm' => Yii::t('user', 'Are you sure you want to confirm this user?'),
@@ -88,7 +88,7 @@ $profileAvatarURI = !empty($avatar = $model->profile->getMediaAvatar()) ? $avata
             </div>
         </a>
         <a class='delete-btn' href="<?= sprintf("%s/block?id=%d", $moduleBaseUrl, $model->primaryKey );?>" title="Block" aria-label="Block" data-confirm="Are you sure you want to block this user?" data-method="post" data-pjax="0">
-           <?php if(method_exists($model, 'canBeDeleted')) {
+         <?php if(method_exists($model, 'canBeDeleted')) {
            // echo "data-delete-allowed=\"" . var_export($model->canBeDeleted(), true) . "\"";
             if(!$model->canBeDeleted()) {
              // echo " data-delete-alert=\"" . $model->deleteAlertMessage() . "\"";
