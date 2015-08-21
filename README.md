@@ -28,6 +28,10 @@ php yii migrate/up --migrationPath=@vendor/matacms/matacms-user/migrations
 Changelog
 ---------
 
+## 1.0.2.1-alpha, August 21, 2015
+
+- Removed delete/block button on list view
+
 ## 1.0.2-alpha, August 21, 2015
 
 - Added sending email whe administrator changed user password
