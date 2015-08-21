@@ -28,8 +28,11 @@ php yii migrate/up --migrationPath=@vendor/matacms/matacms-user/migrations
 Changelog
 ---------
 
-## 1.0.2-alpha, July 23, 2015
+## 1.0.2-alpha, August 21, 2015
 
+- Added sending email whe administrator changed user password
+- Fixed Block/Unblock functionality
+- Added profile fiels on create user form
 - Updates
 
 ## 1.0.1.8-alpha, July 23, 2015
