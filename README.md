@@ -32,7 +32,7 @@ Changelog
 
 - Added sending email whe administrator changed user password
 - Fixed Block/Unblock functionality
-- Added profile fiels on create user form
+- Added profile fields on create user form
 - Updates
 
 ## 1.0.1.8-alpha, July 23, 2015
