@@ -23,6 +23,7 @@ use yii\data\Sort;
 use mata\helpers\BehaviorHelper;
 use matacms\controllers\module\Controller as BaseController;
 use matacms\base\MessageEvent;
+use yii\base\Event;
 use Yii;
 
 /**
@@ -151,6 +152,7 @@ class AdminController extends Controller
             $profile = $this->finder->findProfileById($user->id);
             $profile->load($r->post());
             $profile->save();
+            Event::trigger(BaseController::class, BaseController::EVENT_MODEL_CREATED, new MessageEvent($profile));
             $this->trigger(BaseController::EVENT_MODEL_CREATED, new MessageEvent($user));
             \Yii::$app->getSession()->setFlash('success', \Yii::t('user', 'User has been created'));
             return $this->redirect(['index']);
@@ -178,6 +180,7 @@ class AdminController extends Controller
          $this->performAjaxValidation([$user, $profile]);
 
          if ($user->load($r->post()) && $profile->load($r->post()) && $user->save() && $profile->save()) {
+             Event::trigger(BaseController::class, BaseController::EVENT_MODEL_UPDATED, new MessageEvent($profile));
              $this->trigger(BaseController::EVENT_MODEL_UPDATED, new MessageEvent($user));
              \Yii::$app->getSession()->setFlash('success', \Yii::t('user', 'User has been updated'));
              return $this->redirect(['index']);

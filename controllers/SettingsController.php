@@ -24,6 +24,7 @@ use yii\web\Response;
 use matacms\widgets\ActiveForm;
 use matacms\controllers\module\Controller as BaseController;
 use matacms\base\MessageEvent;
+use yii\base\Event;
 
 /**
  * SettingsController manages updating user settings (e.g. profile, email and password).
@@ -100,7 +101,7 @@ class SettingsController extends Controller
          if ($profileModel->load(\Yii::$app->request->post()) && $accountModel->load(\Yii::$app->request->post())) {
 
              if($profileModel->validate() && $accountModel->validate() && $profileModel->save() && $accountModel->save()) {
-                 $this->trigger(BaseController::EVENT_MODEL_CREATED, new MessageEvent('Your account has been updated'));
+                 Event::trigger(BaseController::class, BaseController::EVENT_MODEL_UPDATED, new MessageEvent($profileModel));
                  \Yii::$app->getSession()->setFlash('success', \Yii::t('user', 'Your account has been updated'));
                  return $this->refresh();
              }

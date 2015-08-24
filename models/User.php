@@ -420,7 +420,9 @@ class User extends ActiveRecord implements IdentityInterface
         }
 
         if (!empty($this->password)) {
-            $this->passwordChanged = !Password::validate($this->password, $this->getOldAttribute('password_hash'));
+
+            if(!empty($this->getOldAttribute('password_hash')))
+                $this->passwordChanged = !Password::validate($this->password, $this->getOldAttribute('password_hash'));
             $this->setAttribute('password_hash', Password::hash($this->password));
         }
 
