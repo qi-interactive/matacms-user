@@ -28,6 +28,10 @@ php yii migrate/up --migrationPath=@vendor/matacms/matacms-user/migrations
 Changelog
 ---------
 
+## 1.0.2.4-alpha, November 2, 2015
+
+- Added sending welcome message on user creation
+
 ## 1.0.2.3-alpha, September 16, 2015
 
 - Added /user/create/admin command (creates user with admin role)

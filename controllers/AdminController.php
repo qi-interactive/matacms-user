@@ -148,7 +148,7 @@ class AdminController extends Controller
 
         $this->performAjaxValidation($user);
 
-        if ($user->load($r->post()) && $user->save()) {
+        if ($user->load($r->post()) && $user->create()) {
             $profile = $this->finder->findProfileById($user->id);
             $profile->load($r->post());
             $profile->save();
