@@ -28,6 +28,10 @@ php yii migrate/up --migrationPath=@vendor/matacms/matacms-user/migrations
 Changelog
 ---------
 
+## 1.0.2.5-alpha, May 5, 2015
+
+- Fixed user search functionality
+
 ## 1.0.2.4-alpha, November 2, 2015
 
 - Added sending welcome message on user creation

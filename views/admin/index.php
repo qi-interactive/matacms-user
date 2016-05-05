@@ -13,6 +13,7 @@ use yii\helpers\Html;
 use yii\widgets\Pjax;
 use yii\widgets\ListView;
 use yii\helpers\Inflector;
+use matacms\theme\simple\assets\ModuleIndexAsset;
 
 /**
  * @var yii\web\View $this
@@ -22,6 +23,9 @@ use yii\helpers\Inflector;
 
 $this->title = Yii::t('user', 'Manage users');
 $this->params['breadcrumbs'][] = $this->title;
+
+ModuleIndexAsset::register($this);
+
 ?>
 <h1><?= Html::encode($this->title) ?> <?= Html::a(Yii::t('user', 'Create a user account'), ['create'], ['class' => 'btn btn-success']) ?></h1>
 

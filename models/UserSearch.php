@@ -46,8 +46,7 @@ class UserSearch extends Model
     public function rules()
     {
         return [
-        [['created_at'], 'integer'],
-        [['username', 'email', 'registration_ip'], 'safe'],
+            [['created_at', 'username', 'email', 'registration_ip'], 'safe'],
         ];
     }
 
@@ -62,32 +61,51 @@ class UserSearch extends Model
         ];
     }
 
+    public function getProfile()
+    {
+        $userQuery = $this->finder->getUserQuery();
+        $modelClass = $userQuery->modelClass;
+
+        $query = \Yii::$app->getModule('user')->modelMap['Profile']::find();
+        $query->primaryModel = $modelClass;
+        $query->link = ['profile.user_id' => 'user.id'];
+        $query->multiple = false;
+        return $query;
+    }
+
     /**
      * @param $params
      * @return ActiveDataProvider
      */
     public function search($params)
     {
-        $query = $this->finder->getUserQuery();
+
+        $userQuery = $this->finder->getUserQuery();
+        $modelClass = $userQuery->modelClass;
+
+        $query = $modelClass::find()->joinWith(['profile']);
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
             ]);
 
-        if (!($this->load($params) && $this->validate())) {
+        $this->load($params);
+
+        if (!$this->validate()) {
             return $dataProvider;
         }
 
         $query->andFilterWhere(['created_at'=> $this->created_at])
-        ->andFilterWhere(['like', 'username', $this->username])
-        ->andFilterWhere(['like', 'email', $this->email])
-        ->andFilterWhere(['registration_ip' => $this->registration_ip]);
+        ->orFilterWhere(['like', 'username', $this->username])
+        ->orFilterWhere(['like', 'profile.name', isset($params['UserSearch']) ? $params['UserSearch']['profile.name'] : ''])
+        ->orFilterWhere(['like', 'email', $this->email])
+        ->orFilterWhere(['registration_ip' => $this->registration_ip]);
 
         return $dataProvider;
     }
 
 
     public function filterableAttributes() {
-        return ["username", "email", "created_at"];
+        return ["username", "email", "created_at", 'profile.name'];
     }
 }
