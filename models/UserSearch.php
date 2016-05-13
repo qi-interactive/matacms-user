@@ -67,7 +67,6 @@ class UserSearch extends Model
         $modelClass = $userQuery->modelClass;
         $profileModelClass = \Yii::$app->getModule('user')->modelMap['Profile'];
         $query = $profileModelClass::find();
-        $query = \Yii::$app->getModule('user')->modelMap['Profile']::find();
         $query->primaryModel = $modelClass;
         $query->link = ['profile.user_id' => 'user.id'];
         $query->multiple = false;
