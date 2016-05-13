@@ -27,6 +27,8 @@ class LoginForm extends Model
     /** @var string Whether to remember the user */
     public $rememberMe = false;
 
+    public $offsetFromUTC;
+
     /** @var \matacms\user\models\User */
     protected $user;
 
@@ -61,7 +63,7 @@ class LoginForm extends Model
     public function rules()
     {
         return [
-        [['login', 'password'], 'required'],
+        [['login', 'password', 'offsetFromUTC'], 'required'],
         ['login', 'trim'],
         ['password', function ($attribute) {
             if ($this->user === null || !Password::validate($this->password, $this->user->password_hash)) {
@@ -93,6 +95,7 @@ class LoginForm extends Model
     public function login()
     {
         if ($this->validate()) {
+            $this->user->setOffsetFromUTC($this->offsetFromUTC);
             return \Yii::$app->getUser()->login($this->user, $this->rememberMe ? $this->module->rememberFor : 0);
         } else {
             return false;

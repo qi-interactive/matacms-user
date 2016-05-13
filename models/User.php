@@ -54,6 +54,8 @@ class User extends ActiveRecord implements IdentityInterface
     /** @var string Plain password. Used for model validation. */
     public $password;
 
+    public $offsetFromUTC;
+
     /** @var \mata\user\Module */
     protected $module;
 
@@ -495,9 +497,19 @@ class User extends ActiveRecord implements IdentityInterface
     }
 
     public function __get($name) {
-     if ($name == "created_at")
-        return date('Y-m-d H:i:s', $this->getAttribute($name));
+        if ($name == "created_at")
+            return date('Y-m-d H:i:s', $this->getAttribute($name));
 
-    return parent::__get($name);
-}
+        return parent::__get($name);
+    }
+
+    public function setOffsetFromUTC($offsetFromUTC)
+    {
+        \Yii::$app->getSession()->set('__offsetFromUTC', $offsetFromUTC);
+    }
+
+    public function getOffsetFromUTC()
+    {
+        return \Yii::$app->getSession()->get('__offsetFromUTC', 0);
+    }
 }
