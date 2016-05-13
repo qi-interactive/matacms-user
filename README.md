@@ -28,6 +28,10 @@ php yii migrate/up --migrationPath=@vendor/matacms/matacms-user/migrations
 Changelog
 ---------
 
+## 1.0.2.7-alpha, May 13, 2016
+
+- Bug fix
+
 ## 1.0.2.6-alpha, May 13, 2016
 
 - Added setOffsetFromUTC() and getOffsetFromUTC() to User model and offsetFromUTC property to LoginForm
