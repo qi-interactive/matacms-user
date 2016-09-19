@@ -16,8 +16,8 @@ use yii\web\View;
 class Html extends BaseHtml {
 
 	public static function activeModuleAccessibilityField($model, $attribute, $options = []) {
-        
-        $items = ArrayHelper::map(\Yii::$app->moduleMenuManager->getMenuModules(), 'ModuleId', 'ModuleName');
+
+        $items = ArrayHelper::map(\Yii::$app->moduleAccessibilityManager->getAvailableModules(), 'ModuleId', 'ModuleName');
 		$value = $model->isNewRecord ? [] : ArrayHelper::getColumn(\Yii::$app->moduleAccessibilityManager->getModulesByUser($model->getId()), 'ModuleId');
 
 		if ($value != null)

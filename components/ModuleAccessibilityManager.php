@@ -14,6 +14,7 @@ use yii\db\Query;
 use yii\db\Connection;
 use yii\db\Expression;
 use yii\di\Instance;
+use mata\modulemenu\models\Module as ModuleModel;
 
 /**
  * This Auth manager changes visibility and signature of some methods from \yii\rbac\DbManager.
@@ -87,6 +88,26 @@ class ModuleAccessibilityManager extends Component
             ])->execute();
 
         return $moduleAccessible;
+    }
+
+	public function getAvailableModules() {
+        $modules = ModuleModel::find()->orderBy('Order ASC, Id ASC')->all();
+
+        $modulesMap = [];
+
+        foreach ($modules as $moduleEntry) {
+            $module = Yii::$app->getModule($moduleEntry->Id);
+
+            // Not every module should be loaded as a Yii module
+            if ($module == null || $module->getNavigation() == null || $module->id == 'users') {
+                \Yii::info(sprintf("Module %s not available - not a Yii module", $moduleEntry->Name), __CLASS__);
+                continue;
+            }
+
+            $modulesMap[] = ['ModuleId' => $module->id, 'ModuleName' => $module->getName()];
+        }
+
+        return $modulesMap;
     }
 
 }

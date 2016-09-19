@@ -28,6 +28,10 @@ php yii migrate/up --migrationPath=@vendor/matacms/matacms-user/migrations
 Changelog
 ---------
 
+## 1.0.2.9-alpha, September 19, 2016
+
+- Added getAvailableModules() method into ModuleAccessibilityManager and use it in module accesibility widget
+
 ## 1.0.2.8-alpha, May 13, 2016
 
 - Bug fix
