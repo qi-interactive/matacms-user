@@ -19,7 +19,7 @@
     },
     "autoload": {
         "psr-4": {
-            "matacms\\user\\": ""
+            "matacms\\user\\": ["../../../frontend/modules/matacms/user", "../../../mata-cms/modules/matacms/matacms-user", ""]
         }
     },
     "extra": {
