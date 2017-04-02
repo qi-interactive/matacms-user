@@ -57,7 +57,7 @@ class AdminController extends Controller
         'actions' => [
         'delete'  => ['post'],
         'confirm' => ['get'],
-        'block'   => ['get']
+        'block'   => ['post']
         ],
         ],
             // 'access' => [
