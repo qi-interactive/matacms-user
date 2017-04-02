@@ -28,6 +28,9 @@ php yii migrate/up --migrationPath=@vendor/matacms/matacms-user/migrations
 Changelog
 ---------
 
+## 1.0.6-alpha, April 2, 2017
+- Allowed blocking / unblocking users by a POST request
+
 ## 1.0.3-alpha, November 7, 2016
 
 - Added ability to overwrite module using psr-4 paths
