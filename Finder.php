@@ -8,13 +8,13 @@
 
 namespace matacms\user;
 
-use yii\base\Object;
+use yii\base\BaseObject;
 use yii\db\ActiveQuery;
 
 /**
  * Finder provides some useful methods for finding active record models.
  */
-class Finder extends Object
+class Finder extends BaseObject
 {
     /** @var ActiveQuery */
     protected $userQuery;
